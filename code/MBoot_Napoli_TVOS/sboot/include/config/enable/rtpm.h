@@ -1,0 +1,1 @@
+#define CONFIG_ENABLE_RTPM 1

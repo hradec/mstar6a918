@@ -1,0 +1,1 @@
+#undef CONFIG_BOOTLOGO_4K2K

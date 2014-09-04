@@ -1,0 +1,1 @@
+#undef CONFIG_MIU0_4X_MODE

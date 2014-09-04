@@ -1,0 +1,1 @@
+#define SKIP_NCONFIG_STORE_IN_NAND_FLASH(...) __VA_ARGS__

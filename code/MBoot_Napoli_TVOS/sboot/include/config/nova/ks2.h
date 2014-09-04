@@ -1,0 +1,1 @@
+#undef CONFIG_NOVA_KS2

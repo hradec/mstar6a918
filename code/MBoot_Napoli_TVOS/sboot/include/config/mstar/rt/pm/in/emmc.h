@@ -1,0 +1,1 @@
+#define CONFIG_MSTAR_RT_PM_IN_EMMC 1

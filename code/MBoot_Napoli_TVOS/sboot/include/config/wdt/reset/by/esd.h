@@ -1,0 +1,1 @@
+#undef CONFIG_WDT_RESET_BY_ESD

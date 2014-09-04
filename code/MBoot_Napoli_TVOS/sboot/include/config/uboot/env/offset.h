@@ -1,0 +1,1 @@
+#define CONFIG_UBOOT_ENV_OFFSET 0x

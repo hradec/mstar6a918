@@ -1,0 +1,1 @@
+#define CONFIG_MSTAR_VID_CTRL_I2C 1

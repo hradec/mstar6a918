@@ -1,0 +1,1 @@
+#define SKIP_MCONFIG_BINARY_IN_SPI_FLASH(...) __VA_ARGS__

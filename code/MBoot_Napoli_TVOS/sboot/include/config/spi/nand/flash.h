@@ -1,0 +1,1 @@
+#undef CONFIG_SPI_NAND_FLASH

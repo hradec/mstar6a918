@@ -1,0 +1,1 @@
+#undef CONFIG_EXT4_JBD2_INIT

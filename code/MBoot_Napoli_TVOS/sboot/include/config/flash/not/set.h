@@ -1,0 +1,1 @@
+#define CONFIG_FLASH_NOT_SET 1

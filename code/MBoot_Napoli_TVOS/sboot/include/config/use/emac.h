@@ -1,0 +1,1 @@
+#define CONFIG_USE_EMAC 1

@@ -1,0 +1,1 @@
+#undef CONFIG_CSOT_VB1

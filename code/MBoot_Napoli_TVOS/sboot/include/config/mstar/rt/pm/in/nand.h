@@ -1,0 +1,1 @@
+#undef CONFIG_MSTAR_RT_PM_IN_NAND

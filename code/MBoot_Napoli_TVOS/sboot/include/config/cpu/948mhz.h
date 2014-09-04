@@ -1,0 +1,1 @@
+#undef CONFIG_CPU_948MHZ

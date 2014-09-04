@@ -1,0 +1,1 @@
+#undef CONFIG_URSA9_VB1

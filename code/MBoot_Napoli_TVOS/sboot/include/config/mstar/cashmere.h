@@ -1,0 +1,1 @@
+#define CONFIG_MSTAR_CASHMERE 1

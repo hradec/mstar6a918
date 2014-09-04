@@ -1,0 +1,1 @@
+#undef CONFIG_WB_DRAM_EMBEDDED

@@ -1,0 +1,1 @@
+#define CONFIG_MIU0_DDR3_1866 1

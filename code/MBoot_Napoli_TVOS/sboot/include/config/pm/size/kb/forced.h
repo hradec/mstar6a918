@@ -1,0 +1,1 @@
+#define CONFIG_PM_SIZE_KB_FORCED 0

@@ -1,0 +1,1 @@
+#define CONFIG_MIU0_8X_MODE 1
