@@ -1,0 +1,8 @@
+config MSTAR_WDT
+
+tristate "Watchdog"
+depends on WATCHDOG
+default n 
+help
+    MStar Watchdog driver function
+    

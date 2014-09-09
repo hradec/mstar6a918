@@ -1,0 +1,1 @@
+cmd_drivers/mstar/CPU_calibrating/built-in.o :=  /tools/arm/arm-2012.09/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/mstar/CPU_calibrating/built-in.o drivers/mstar/CPU_calibrating/mdrv_CPU_calibrating.o ; scripts/mod/modpost drivers/mstar/CPU_calibrating/built-in.o

@@ -1,0 +1,7 @@
+mstar usb host driver porting
+* If the kernel version is 3.8.13, you need to insert this four modules by the following order:
+* usb-common.ko
+* usbcore.ko
+* ehci-hcd.ko
+* usb-storage.ko
+

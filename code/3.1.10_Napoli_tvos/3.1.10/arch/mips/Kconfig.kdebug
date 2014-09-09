@@ -1,0 +1,643 @@
+menuconfig REDLION_DEBUG
+       bool "REDLION DEBUG"
+       default y
+
+if REDLION_DEBUG
+menu "Redlion options"
+comment "kernel 3.1.10"
+
+
+config SHOW_FAULT_TRACE_INFO
+    bool "Show trace info on user page fault"
+    default y
+    help
+      Shows trace information when "Segmentation fault" or "Bus error" occurs.
+      Prints registers, call stack, maps, user stack, etc.
+
+config SHOW_THREAD_GROUP_STACK 
+    bool "Show thread group's stack on user page fault" 
+    default n
+    depends on SHOW_FAULT_TRACE_INFO
+    help 
+      Shows thread group's user stack along with basic fault trace information.
+      It may be useful where fault occurs in one thread, but another thread is
+      a criminal.
+      Be careful, dumping all threads stack can generate very long message.
+
+config VDLP_VERSION_INFO
+    bool "Display kernel, patch number info"
+    default n
+    help
+      Print kernel, patch number info.
+
+config DISABLE_UNALIGNED_ACCESS 
+       bool "not support unaligned access"
+       default y
+       depends on ALIGNMENT_TRAP 
+       help
+        not support unaligned access.
+
+config SHOW_PC_LR_INFO
+    bool "Show address range including PC, LR"
+    depends on SHOW_FAULT_TRACE_INFO
+    default y
+
+config SERIAL_INPUT_MANIPULATION
+    bool "Manipulate serial input in N_TTY"
+    help
+      Decide whether serial input by user is enabled or not.
+
+config SERIAL_INPUT_DISABLE_STRING
+    string "Serial input disable string"
+    default "~~bye"
+    depends on SERIAL_INPUT_MANIPULATION=y
+    help
+      Default string that disable serial input by user.
+
+config SERIAL_INPUT_DEFAULT_SETUP_ENABLE
+    bool "Serial input enable setup at boot"
+    default y
+    depends on SERIAL_INPUT_MANIPULATION=y
+
+config SERIAL_INPUT_MANIPULATION_PORTNUM
+    int "Serial input port line number"
+    default 0
+    depends on SERIAL_INPUT_MANIPULATION=y
+
+config SERIAL_INPUT_ENABLE_ONLY_NUMBER
+    bool "Enable only 0~9, space, enter and backspace as serial input"
+    default n
+    depends on SERIAL_INPUT_MANIPULATION=y
+
+config SERIAL_INPUT_ENABLE_HELP_MSG
+    bool "Print help message for serial input"
+    default y
+    depends on SERIAL_INPUT_MANIPULATION=y
+
+config DTVLOGD
+	bool "DTVLOGD serial message logging system"
+	default n
+	help
+	  Saving all serial message into memory buffer.
+	  Logs are saved in in-kernel memory and can be used
+	  for other features:
+	  - Emergency Logging
+	  - USB Logging
+
+config DTVLOGD_EMERGENCY_LOG
+	bool "DTVLOGD - Emergency Log"
+	default n
+	depends on DTVLOGD
+	help
+	  Save emergency serial message into flash.
+	  Logs are saved in a temporary RAM buffer and get saved
+	  into flash area during:
+	  crash/watchdog restart.
+
+config DTVLOGD_EMEG_LOGD_BUFFER_ADDRESS
+	hex "Emeg Log Buffer address"
+	default 0x00000000
+	depends on DTVLOGD_EMERGENCY_LOG
+	help
+	  This is the base address of emergency log.
+	  This address must be 64k aligned (0x10000).
+	  Configure this address carefully
+	  (Incorrect address may crash the system..).
+
+config DTVLOGD_HUB_KDEBUGD
+       bool "DTVLOGD_PRINT HUB KDEBUGD"
+       default n
+       depends on DTVLOGD
+       depends on DTVLOGD_EMERGENCY_LOG
+       depends on KDEBUGD_HUB_DTVLOGD
+
+config DTVLOGD_USB_LOG
+	bool "DTVLOGD - USB Log"
+	default n
+	depends on DTVLOGD
+	help
+	  Save all serial message into usb.
+	  Logs are saved into USB at run-time.
+	  Depends on dtvlogd buffer.
+	  Use only for Debug as prints can be huge.
+
+config DTVLOGD_DEBUG
+	bool "DTVLOGD DEBUG mode"
+	default n
+	depends on DTVLOGD
+	help
+	  Prints all dtvlogd debug messages.
+	  It also enables taking backup of log file at runtime.
+	  (useful during development time)
+	  This is generally disabled (N).
+
+config SEPARATE_PRINTK_FROM_USER
+    bool "It separate messages(printf, printk) between user and kernel."
+    default y 
+
+config BOOTPROFILE
+       bool "Boot Profile"
+       default n
+       help
+        Tool for performance analysis and visualization of boot process.
+
+config KDEBUGD
+        bool "KDEBUGD - core"
+        default n
+        depends on SHOW_FAULT_TRACE_INFO
+        depends on SERIAL_INPUT_MANIPULATION
+        help
+         kdebugd - kernel debugging helper
+         kdebugd is a good solution for kernel hacker who want to know
+         kernel information easily.
+
+config KDEBUGD_TRACE
+            bool "KDEBUGD - backtrace"
+            default y
+        depends on KDEBUGD
+        help
+          kdebugd - backtrace
+          1. Dump backtrace(User)
+
+config KDEBUGD_FTRACE
+    bool "KDEBUGD - Ftrace Support"
+    default y
+    depends on KDEBUGD
+    select FTRACE
+    select GENERIC_TRACER
+    help
+      Enable the kernel to trace every kernel function. This is done
+      by using a compiler feature to insert a small, 5-byte No-Operation
+      instruction at the beginning of every kernel function, which NOP
+      sequence is then dynamically patched into a tracer call when
+      tracing is enabled by the administrator. If it's runtime disabled
+      (the bootup default), then the overhead of the instructions is very
+      small and not measurable even in micro-benchmarks.
+
+config KDEBUGD_FTRACE_HR_CLOCK
+        bool "High resolution trace clock"
+        depends on KDEBUGD_FTRACE
+        default y
+
+config FTRACE_DEFAULT_TRACER
+    string "Default tracer(check help for details)"
+    default "function"
+    depends on KDEBUGD_FTRACE
+    help
+        Default tracer(function, function_graph, sched_switch,
+		wakeup, irqsoff, preemptoff, stack, kmemtrace, branch)
+
+config FTRACE_DEFAULT_TRACE_LIST
+    string "Default trace list"
+    default ""
+    depends on KDEBUGD_FTRACE
+    help
+        Default trace list
+
+config FTRACE_DEFAULT_TRACE_NOT_LIST
+    string "Default trace not list"
+    default ""
+    depends on KDEBUGD_FTRACE
+    help
+        Default trace not list
+
+config FTRACE_DEFAULT_TRACE_GRAPH_LIST
+    string "Default trace graph list"
+    default ""
+    depends on KDEBUGD_FTRACE
+    help
+        Default trace graph list
+
+config FTRACE_DEFAULT_TRACE_MODE
+	int "Default trace mode(1 print,2 log)"
+	default 1
+    depends on KDEBUGD_FTRACE
+    help
+        Default trace mode
+
+config FTRACE_DEFAULT_TRACE_OUTPUT_NUM_LINES
+	int "Default trace output num lines(0 to FTRACE_MAX_OUTPUT_NUM_LINES)"
+	default 0
+    depends on KDEBUGD_FTRACE
+    help
+        Default trace output num lines
+
+config FTRACE_DEFAULT_TRACE_OUTPUT_FILE_NAME
+    string "Default trace output file name"
+    default "/mtd_rwarea/trace.dat"
+    depends on KDEBUGD_FTRACE
+    help
+        Default trace output file name
+
+config FTRACE_DEFAULT_TRACE_SIZE_KB
+    int "Default trace buffer size(kb)(1 to FTRACE_MAX_TRACE_SIZE_KB)"
+    default 1
+    depends on KDEBUGD_FTRACE
+    help
+        Default trace buffer size(kb)
+
+config FTRACE_DEFAULT_TRACE_CPU_MASK
+    int "Default trace cpu mask(1 to CONFIG_NR_CPUS)"
+    default 3
+	 depends on SMP
+    depends on KDEBUGD_FTRACE
+    help
+        Default trace cpu mask
+		 Binary value 11(Decimal 3) represents mask set for 1st and 2nd CPU.
+		 By default CPU mask is 3.
+		 This means tracing will be done for 1st and 2nd CPU both.
+
+config FTRACE_TIMESTAMP_NSEC_STATUS
+    int "Default timestamp nanosecond resolution"
+    default 0
+    depends on KDEBUGD_FTRACE_HR_CLOCK
+    help
+        Default timestamp nanosecond resolution
+        By default it is disabled
+
+config KDEBUGD_FUTEX
+        bool "KDEBUGD - Futex List"
+        default y
+        depends on FUTEX
+        depends on KDEBUGD
+        help
+          kdebugd - Futex List
+          1. Dump the list of threads (with backtrace) waiting on futex
+
+config KDEBUGD_MISC
+        bool "KDEBUGD - miscellaneous functions"
+        default y
+        depends on KDEBUGD
+        help
+         kdebugd - kernel debugging helper
+         1. A list of tasks and their relation information
+         2. A list of tasks and their priority information
+         3. A list of tasks and their inforamtion + backtrace(kernel)
+         4. Turn On/Off O(1) Scheduler prints
+         5. Dump task register with pid
+         6. Dump task maps with pid
+         7. Dump user stack with pid
+         8. Trace thread execution(look at PC)
+         9. Schedule history logger
+
+config SHOW_TASK_STATE
+            bool "Show task state"
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd -A list of tasks and their relation information
+
+config SHOW_TASK_PRIORITY
+            bool "Show task priority"
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd -A list of tasks and their priority  information
+
+
+config TASK_STATE_BACKTRACE
+            bool "Show task state backtrace"
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd - A list of tasks and their inforamtion + backtrace(kernel).
+
+config TASK_FOR_COREDUMP
+            bool "Kill task to coredump"
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd - Kill the task to create coredump
+
+config SHOW_USER_THREAD_REGS
+            bool "Dump task register with pids"
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd - Dump task register with pid
+
+config SHOW_USER_MAPS_WITH_PID
+            bool "Dump task maps with pid "
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd - Dump task maps with pid
+
+config SHOW_USER_STACK_WITH_PID
+            bool "Dump task stack with pid "
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd - Dump task stack with pid
+
+config VIRTUAL_TO_PHYSICAL
+            bool "Usermode Virtual to Physical Address Converter"
+            default y
+        depends on KDEBUGD_MISC
+        help
+         kdebugd - converts user mode virtual address to physical address and dumps contents of given location
+
+config MEMORY_VALIDATOR
+            bool "Memory Value Watcher"
+            default y
+        depends on VIRTUAL_TO_PHYSICAL
+        help
+          kdebugd - Memory Value Watcher
+
+config TRACE_THREAD_PC
+            bool "Trace thread execution(look at PC)"
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd - Trace thread execution(look at PC)
+
+config SCHED_HISTORY
+            bool "show schedule history"
+            default y
+        depends on KDEBUGD_MISC
+        help
+          kdebugd - Show schedule history logger
+
+config SCHED_HISTORY_AUTO_START
+       bool "schedule history auto start"
+           default n
+           depends on SCHED_HISTORY
+           help
+             start schedule history in background.
+
+
+config KDEBUGD_COUNTER_MONITOR
+           bool "KDEBUGD - counter monitor"
+           default y
+        depends on KDEBUGD
+       help
+          kdebugd - counter monitor
+          1. CPU Usage
+          2. CPU Usage for each thread
+          3. Memory Usage
+          4. Disk Usage
+          5. Network Usage
+
+config KDEBUGD_COUNTER_MON_AUTO_START
+           bool "KDEBUGD - counter monitor auto start"
+           default n
+        depends on KDEBUGD_COUNTER_MONITOR
+       help
+         auto start feature of counter monitor at the boot time, counter monitor will start at boot time after given second(start second).
+
+config COUNTER_MON_AUTO_START_PERIOD
+          bool "KDEBUGD - counter monitor specified period"
+                  default n
+        depends on KDEBUGD_COUNTER_MON_AUTO_START
+                help
+                  In this menu start and stop second can be specified for counter monitor auto start
+
+config  COUNTER_MON_START_SEC
+        int "KDEBUGD - counter monitor start second"
+        default 0
+        depends on COUNTER_MON_AUTO_START_PERIOD
+            help
+            set the start second.
+
+config  COUNTER_MON_FINISHED_SEC
+            int "KDEBUGD - counter monitor finished seconds"
+        default 60
+        depends on COUNTER_MON_AUTO_START_PERIOD
+            help
+            set the finished  second.
+
+config SEC_CPU_AUTO_START
+           bool "For CPU Usage"
+           default y
+        depends on KDEBUGD_COUNTER_MON_AUTO_START
+            help
+            set the start and finished second for cpu usage start at boot time.
+
+
+config SEC_TOPTHREAD_AUTO_START
+           bool "For Top Thread"
+           default y
+        depends on KDEBUGD_COUNTER_MON_AUTO_START
+           help
+            set the start and finished second for top thread start at boot time.
+
+
+config SEC_MEMUSAGE_AUTO_START
+           bool "For Memory Usage"
+           default y
+        depends on KDEBUGD_COUNTER_MON_AUTO_START
+           help
+            set the start and finished second for mem usage start at boot time.
+
+
+config SEC_NETUSAGE_AUTO_START
+           bool "For Net Usage"
+           default y
+        depends on KDEBUGD_COUNTER_MON_AUTO_START
+           help
+            set the start and finished second for net usage start at boot time.
+
+
+config SEC_DISKUSAGE_AUTO_START
+           bool "For Disk Usage"
+           default y
+        depends on KDEBUGD_COUNTER_MON_AUTO_START
+           help
+            set the start and finished second for disk usage start at boot time.
+
+config KDEBUGD_CPUUSAGE_BUFFER_SIZE
+        int "CPU usage buffer size"
+        default 120
+        depends on KDEBUGD_COUNTER_MONITOR
+
+config KDEBUGD_TOPTHREAD_BUFFER_SIZE
+        int "Topthread buffer size"
+        default 120
+        depends on KDEBUGD_COUNTER_MONITOR
+
+
+config KDEBUGD_MEMUSAGE_BUFFER_SIZE
+        int "Memory usage buffer size"
+        default 120
+        depends on KDEBUGD_COUNTER_MONITOR
+
+config KDEBUGD_DISKUSAGE_BUFFER_SIZE
+        int "Disk usage buffer size"
+        default 120
+        depends on KDEBUGD_COUNTER_MONITOR
+
+config KDEBUGD_NETUSAGE_BUFFER_SIZE
+        int "Network usage buffer size"
+        default 120
+        depends on KDEBUGD_COUNTER_MONITOR
+
+config ELF_MODULE
+        bool "KDEBUGD - ELF Module"
+        default y
+       depends on KDEBUGD
+
+config DWARF_MODULE
+        bool "DWARF Module"
+        default y
+       depends on ELF_MODULE
+
+config ADVANCE_OPROFILE
+        bool "KDEBUGD - Advance OProfile"
+        default y
+       depends on KDEBUGD
+       depends on OPROFILE
+
+config AOP_AUTO_START
+        bool "Advance OProfile Auto start"
+        default n
+       depends on ADVANCE_OPROFILE
+
+
+config AOP_START_SEC
+        int "Advance OProfile Auto start start sec"
+        default 1
+       depends on AOP_AUTO_START
+
+config AOP_DURATION
+        int "Advance OProfile Auto Duration (in second)"
+        default 120
+       depends on AOP_AUTO_START
+
+config MEM_DBG
+       bool "KDEBUGD - Memory Debug"
+       default n
+       depends on KDEBUGD
+
+config MEM_CHK
+       bool "KDBG Memory corruption check"
+       default n
+       depends on MEM_DBG
+
+config KDEBUGD_LIFE_TEST
+       bool "KDEBUGD - LIFE_TEST"
+       default n
+       depends on KDEBUGD
+
+config  LIFETEST_START_SEC
+        int "KDEBUGD - LifeTest start second"
+        default 15
+        depends on KDEBUGD_LIFE_TEST
+	    help
+	    set the start second.
+
+config KDEBUGD_HUB_DTVLOGD
+	 bool "KDEBUGD HUB DTVLOGD_PRINT"
+	 default y
+	 depends on DTVLOGD_EMERGENCY_LOG
+	 depends on KDEBUGD
+	 select DTVLOGD_HUB_KDEBUGD
+
+config RSS_INFO
+       bool "Support to print rss information of process memory"
+       default n
+       help
+         Enable to print information of rss
+
+config PSS_INFO
+       bool "Support to print pss information of process memory"
+       default y
+       depends on PROC_PAGE_MONITOR
+       help
+         Enable to print information of pss
+
+config VDLP_VERSION_INFO
+    bool "Display kernel, patch number info"
+    default y
+    help
+      Print kernel, patch number info.
+
+config PRINT_KILL_SIGNAL
+    bool "Print kill signal debug message"
+    default n
+    help
+      Print debug message when kill signal is raised.
+
+config SKIP_CHECKING_MEMORY_WHILE_FORK
+       bool "Workaround glibc system() fail problem"
+       default y
+       help
+        workaround glibc system faile problem.
+
+config INFINITE_OOPS_DISPLAY
+    bool "Infinite oops display"
+    default y
+    help
+      Reprint oops log inifinitely(every 3 minute).
+
+config LPJ_MANUAL_SETTING
+    bool "LPJ value manual setting"
+    default y
+    help
+      Manually set the loops_per_jiffy value, to skip calibrating delay loop
+      on boot to improve boot time.
+      Pls note that for each architecture this value is different, therefore
+      first run target without this patch to get value. 
+      Once value is found from boot message log, enable this option and 
+      assign value to "Manual LPJ value"
+    
+config LPJ_VALUE
+    int "Manual LPJ Value"
+    default 0
+    depends on LPJ_MANUAL_SETTING=y
+    help
+      Find value for your architecture before setting this. 
+    
+config DEBUG_STACKOVERFLOW
+       bool "Check for stack overflows"
+       help
+        This option will cause messages to be printed if free stack space
+        drops below a certain limit.
+
+config PRINT_MODULE_ADDR
+       bool "Print Loaded Module Address"
+       default y
+       help
+        print Loaded module address
+
+config DUMP_RANGE_BASED_ON_REGISTER
+       bool "dump register value"
+       default y
+       help
+        dump a specific range of addr bases on register.
+        depends on CONFIG_SHOW_PC_LR_INFO
+
+config VMALLOCUSED_PLUS
+       default y
+       depends on PROC_FS && MMU
+       bool "Plus useful info to 'VmallocUsed' field in meminfo" if EMBEDDED
+       help
+         Add size information of ioremap, vmalloc, vmap, usermap, vpages regions.
+
+config VD_MEMINFO
+       default y
+       depends on RSS_INFO && VMALLOCUSED_PLUS
+       bool "vd meminfo support"
+       help
+        meminfo VD version
+        This function supports detail oom message
+
+config VD_MEMFREE
+       default y
+       bool "/proc/vd_memfree support"
+       help
+        print MemFree+Buffers+Cached+SwapCached-Mapped Kbytes
+
+config PROFILE_MEMORY_USAGE
+       default y
+       bool "support profiling memory usage"
+       depends on VMALLOCUSED_PLUS && VD_MEMINFO
+       help
+        To stop profiling,
+        echo 0 > /proc/sys/vm/profile_memory_usage
+        To start profiling,
+        echo 1 > /proc/sys/vm/profile_memory_usage
+        To start profiling with printing info,
+        echo 2 > /proc/sys/vm/profile_memory_usage
+ 
+endmenu # end of "Redlion options" menu
+endif # end of "REDLION_DEBUG"

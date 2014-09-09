@@ -1,0 +1,14 @@
+#
+
+#
+
+menu "BLCR Support"
+
+config BLCR_SUPPORT
+    tristate "Blcr Support"
+    default y if ARM
+    default n
+	help
+	  blcr--checkpoint and restore
+	  
+endmenu

@@ -1,0 +1,5 @@
+config MSTAR_SATA_HOST
+        tristate "SATA HOST"
+        help
+          MStar SATA Host driver function
+    

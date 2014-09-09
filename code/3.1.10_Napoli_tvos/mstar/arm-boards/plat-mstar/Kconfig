@@ -1,0 +1,8 @@
+if PLAT_MSTAR
+
+config PLAT_MSTAR_SCHED_CLOCK
+	def_bool y if !ARCH_INTEGRATOR_AP
+	select NEED_MACH_MEMORY_H
+	select NEED_MACH_IO_H
+	select HAVE_SCHED_CLOCK
+endif

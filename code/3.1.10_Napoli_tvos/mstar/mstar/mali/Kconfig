@@ -1,0 +1,82 @@
+menu "Mali/UMP"
+
+choice
+	prompt "Version"
+	default MALI400_VERSION_NONE
+
+config MALI400_VERSION_NONE
+	bool "None"
+config MALI400_VERSION_R2P3_01REL0
+	bool "r2p3-01rel0"
+config MALI400_VERSION_R2P4_02REL1
+	bool "r2p4-02rel1"
+config MALI400_VERSION_R3P1_01REL0
+	bool "r3p1-01rel0"
+config MALI400_VERSION_R3P1_01REL1
+	bool "r3p1-01rel1"
+config MALI400_VERSION_R3P2_01REL0
+	bool "r3p2-01rel0"
+config MALI400_VERSION_R3P2_01REL1
+	bool "r3p2-01rel1"
+config MALI400_VERSION_R3P2_01REL2
+	bool "r3p2-01rel2"
+config MALI400_VERSION_R3P2_01REL3
+	bool "r3p2-01rel3"
+
+endchoice
+
+choice
+	prompt "Platform"
+	default MALI400_PLATFORM_NONE
+
+config MALI400_PLATFORM_NONE
+	bool "None"
+config MALI400_PLATFORM_SUPERNOVA
+	bool "Supernova"
+config MALI400_PLATFORM_ANDROID_ICS
+	bool "Android Ice Cream Sandwich"
+config MALI400_PLATFORM_ANDROID_JELLYBEAN
+	bool "Android Jelly Bean"
+config MALI400_PLATFORM_ANDROID_JELLYBEAN_MR1
+	bool "Android Jelly Bean MR1"
+	depends on SYNC
+config MALI400_PLATFORM_ANDROID_JELLYBEAN_MR2
+	bool "Android Jelly Bean MR2"
+	depends on SYNC
+
+endchoice
+
+if !(MALI400_VERSION_NONE || MALI400_PLATFORM_NONE)
+
+config MALI400
+	tristate "Mali-400/450 support"
+	---help---
+	  This enables support for the Mali-400, and Mali-450 GPUs.
+
+	  To compile this driver as a module, choose M here: the module will be
+	  called mali.
+
+config MALI400_DEBUG
+	bool "Enable debug in Mali driver"
+	depends on MALI400
+	---help---
+	  This enabled extra debug checks and messages in the Mali driver.
+
+config UMP
+	tristate "UMP support"
+	---help---
+	  This enables support for the UMP memory allocation and sharing API.
+
+	  To compile this driver as a module, choose M here: the module will be
+	  called ump.
+
+config UMP_DEBUG
+	bool "Enable extra debug in UMP"
+	depends on UMP
+	---help---
+	  This enabled extra debug checks and messages in UMP.
+
+endif
+
+endmenu
+

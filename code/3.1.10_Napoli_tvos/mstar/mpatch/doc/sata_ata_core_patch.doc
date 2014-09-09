@@ -1,0 +1,3 @@
+ATA Core patch to use temp buffer for Read ID function.
+Because there is a hardware limitation at SATA host, the dma address must 0x80 align for sata host transfer.
+At original Read ID functon, the buffer is not align, so we use a temp buffer to align 0x200 to avoid this situation.

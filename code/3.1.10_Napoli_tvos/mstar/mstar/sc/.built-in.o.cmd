@@ -1,0 +1,1 @@
+cmd_drivers/mstar/sc/built-in.o :=  /tools/arm/arm-2012.09/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/mstar/sc/built-in.o drivers/mstar/sc/mdrv-sc.o ; scripts/mod/modpost drivers/mstar/sc/built-in.o

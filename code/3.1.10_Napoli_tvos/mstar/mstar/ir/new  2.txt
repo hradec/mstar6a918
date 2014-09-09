@@ -1,0 +1,323 @@
+130|shell@mstarnapoli:/ $ logcat -s tvos                                       
+--------- beginning of /dev/log/system
+--------- beginning of /dev/log/main
+I/tvos    ( 1035): ************************Panel Table Start*****************************
+I/tvos    ( 1035): mapi_base::m_PanelConf.nSize = 1 
+I/tvos    ( 1035): panel name len:14
+I/tvos    ( 1035): HDMITX_720_60P
+I/tvos    ( 1035): ************************Panel Table End*******************************
+I/tvos    ( 1035): m_strPanelName = HDMITX_720_60P
+I/tvos    ( 1035): HotPlug  = 1
+I/tvos    ( 1035): DotbyDot = 1
+I/tvos    ( 1035): Warning!!! Mirror Type is not NORMAL, but Mirror is DISABLE.
+I/tvos    ( 1035): @@@: Enable KeyPad... 
+I/tvos    ( 1035): @@@@ SetKEYPADCfg
+I/tvos    ( 1035): @@@@@ pSystemini->n : 9 
+I/tvos    ( 1035): [MSOS_PRINT][000520]     [MsOS_Init] already inited!
+I/tvos    ( 1035): BOOL DFBInfo::SetKEYPADCfg(void) OK
+I/tvos    ( 1035): [AT][SN][init mapi][9794]
+I/tvos    ( 1035): HDCPFileName: /certificate/hdcp_key.bin 
+I/tvos    ( 1035): mapi_str::addStrThreadItem ptid=0x6ef19460 m_StrThreadItems.size()=1,this=0x106b488, name=InitVideo Task
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 0, I2C bus = 1 , Mutex#=1
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 1, I2C bus = 0 , Mutex#=0
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 2, I2C bus = 2 , Mutex#=2
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 3, I2C bus = 1 , Mutex#=1
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 4, I2C bus = 1 , Mutex#=1
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 5, I2C bus = 0 , Mutex#=0
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 6, I2C bus = 0 , Mutex#=0
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 7, I2C bus = 0 , Mutex#=0
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 8, I2C bus = 0 , Mutex#=0
+I/tvos    ( 1035): >>>>>>>>CreateI2CDevices:i2c_device = 9, I2C bus = 0 , Mutex#=0
+I/tvos    ( 1035): I2C::SWBUS[0] SCL=053 SDA=052 DELAY=100
+I/tvos    ( 1035): I2C::SWBUS[1] SCL=172 SDA=173 DELAY=100
+I/tvos    ( 1035): I2C::SWBUS[2] SCL=090 SDA=091 DELAY=480
+I/tvos    ( 1035): ====Setup DCLK:62=========
+I/tvos    ( 1035): [CPU INFO] cpu openMDrv_PNL_Init u32PnlRiuBaseAddr = 413fc000
+I/tvos    ( 1035): MDrv_PNL_Init u32PMRiuBaseAddr = 6da15000
+I/tvos    ( 1035): CPUIoctl - MDrv_CMD_CPU_QueryClock
+I/tvos    ( 1035): Can't find out selected GPIO device 24!!Please add GPIO device into system.cfg
+I/tvos    ( 1035): Can't find out selected GPIO device 45!!Please add GPIO device into system.cfg
+I/tvos    ( 1035): [resetCfgFilePath]
+I/tvos    ( 1035): setCfgFilePath=/config/MM/mm_cfg.ini
+I/tvos    ( 1035): [[utopia]]      Start HAL_AUDIO_AllocateVars InitShmFlag=0
+I/tvos    ( 1035): [[utopia]]      create Audio SHM data ...
+I/tvos    ( 1035): [[utopia]]      Audio SHM data is created
+I/tvos    ( 1035): [[utopia]]      reset Audio SHM data ...
+I/tvos    ( 1035): [[utopia]]      End HAL_AUDIO_AllocateVars InitShmFlag=1, ClientCounter=1 
+I/tvos    ( 1035): [[utopia]]      Audio TEE Info SHM is created...
+I/tvos    ( 1035): [[utopia]]      reset Audio TEE Info SHM data ...
+I/tvos    ( 1035): [MApi_XC_MLG_GetStatus, 1555]No instance existed, please get an instance by calling MApi_XC_Init() first
+I/tvos    ( 1035): >>>>>>>>>>>>m_pPanelName = HDMITX_720_60P
+I/tvos    ( 1035): [XC,Version] 
+I/tvos    ( 1035):  MApi_XC_Init_U2, 858, pXC_InitData->stPanelInfo.eLPLL_Type=0
+I/tvos    ( 1035): ************************VD Config Start*****************************
+I/tvos    ( 1035): ===========================> demux buffer usage  0x110000
+I/tvos    ( 1035): << ./epg/dvb/mapi_dvb_epgdb.cpp (4234) >>
+I/tvos    ( 1035): << size of mapi_dvb_epgdb          = 116 >>
+I/tvos    ( 1035): << size of mapi_epgdb_ch       = 112 >>
+I/tvos    ( 1035): << size of mapi_epgdb_ch_id    = 8 >>
+I/tvos    ( 1035): << size of mapi_epgdb_section  = 12 >>
+I/tvos    ( 1035): << size of mapi_epgdb_event    = 104 >>
+I/tvos    ( 1035): << size of set    = 24 >>
+I/tvos    ( 1035): << size of map    = 24 >>
+I/tvos    ( 1035): [mapi_ci.cpp:mapi_ci:215] CI slot [0] has been occupied
+I/tvos    ( 1035): PCMCIA open /dev/system success >> SYS_fd= 11
+I/tvos    ( 1035): [PVR] [GetLibVer] 00732961
+I/tvos    ( 1035): MDrv_PWS_Init() 
+I/tvos    ( 1035): mapi_storage open file failed ! 
+I/tvos    ( 1035): mapi_storage::Init already init m_u8ID=4 m_path.c_str()=/Database/atv_cmdb.bin
+I/tvos    ( 1035): mapi_storage open file failed ! 
+I/tvos    ( 1035): mapi_storage open file failed ! 
+I/tvos    ( 1035): mapi_storage open file failed ! 
+I/tvos    ( 1035): mapi_storage open file failed ! 
+I/tvos    ( 1035): ???????? Warning,The MMAP ID(E_MMAP_ID_EVENTDB_SDRAM) does not existed.
+I/tvos    ( 1035): ???????? If you want this mmap id, please add in your mmap.
+I/tvos    ( 1035): ???????? If you don't want this mmap id, please ignore this message.
+I/tvos    ( 1035): ???????? Warning,The MMAP ID(E_MMAP_ID_EPGEXTDB_SDRAM) does not existed.
+I/tvos    ( 1035): ???????? If you want this mmap id, please add in your mmap.
+I/tvos    ( 1035): ???????? If you don't want this mmap id, please ignore this message.
+I/tvos    ( 1035): Create EPG memory pool by HEAP, the max memory allocation will be 5242880 bytes
+I/tvos    ( 1035): mapi_storage open file failed ! 
+I/tvos    ( 1035): [VE info] VE open
+I/tvos    ( 1035): HAL_MIU_MaskReq not support client ID:91!
+I/tvos    ( 1035): HAL_MIU_MaskReq not support client ID:91!
+I/tvos    ( 1035): HAL_MIU_SelMIU not support client ID:91!
+I/tvos    ( 1035): HAL_MIU_UnMaskReq not support client ID:91!
+I/tvos    ( 1035): ************************PQ Config Start*****************************
+I/tvos    ( 1035): ************************PQ Config End*****************************
+I/tvos    ( 1035): Read Bandwidthtable.bin
+I/tvos    ( 1035): Read Bandwidthtable.bin
+I/tvos    ( 1035): BinStartaDDR ID1=5fea3008
+I/tvos    ( 1035): BinStartaDDR ID3=6f0183b8
+I/tvos    ( 1035): BinStartaDDR ID0=70400008
+I/tvos    ( 1035): BinStartaDDR ID2=6f003170
+I/tvos    ( 1035): Read Bandwidthtable.bin
+I/tvos    ( 1035): Read Bandwidthtable.bin
+I/tvos    ( 1035): BinStartaDDR ID1=70200008
+I/tvos    ( 1035): BinStartaDDR ID3=6f03e148
+I/tvos    ( 1035): BinStartaDDR ID0=70518008
+I/tvos    ( 1035): BinStartaDDR ID2=6f028f00
+I/tvos    ( 1035): mapi_str::removeStrThreadItem ptid=0x6ef19460 m_StrThreadItems.size()=0,this=0x106b488, name=InitVideo Task
+I/tvos    ( 1035): Device or resource busy
+I/tvos    ( 1035): Cannot open interrupt descriptor for irq=147 /home/cax/workdir/Mstar/SOURCECODE/Supernova/projects/devices/pcb/device_pcb_napoli_051D.cpp, 247, Error....m_pSDemod is NULL...
+I/tvos    ( 1035): new device_audio_amp_MSH9010
+I/tvos    ( 1035): new device_audio_amp_MSH9010 DOne
+I/tvos    ( 1035): DeviceMhlCreate(),334 Init Success
+I/tvos    ( 1035): [INFO] MHL Init OK
+I/tvos    ( 1035): Tuner Init Thread
+I/tvos    ( 1035):   sn init-chk#1 
+I/tvos    ( 1035):   sn init-chk#2 
+I/tvos    ( 1035): [GOP Version]:  0089   | BuildNum:  0002  | ChangeList :  00524916 
+I/tvos    ( 1035): Tuner IIC WFail@@@: Enable KeyPad... 
+I/tvos    ( 1035): @@@@ SetKEYPADCfg
+I/tvos    ( 1035): @@@@@ pSystemini->n : 9 
+I/tvos    ( 1035): Tuner IIC WFail
+I/tvos    ( 1035): Tuner IIC WFail
+I/tvos    ( 1035): Tuner IIC WFail[MSOS_PRINT][000520]     [MsOS_Init] already inited!
+I/tvos    ( 1035): BOOL DFBInfo::SetKEYPADCfg(void) OK
+I/tvos    ( 1035): ==========================================
+I/tvos    ( 1035): DFB library build @ 2013-12-30 14:07===========================================
+I/tvos    ( 1035): Tuner IIC WFail
+I/tvos    ( 1035): Tuner IIC WFail
+I/tvos    ( 1035): Tuner IIC WFail@@@@ SetExtDFBRcCfg
+I/tvos    ( 1035): @@@@@ pSystemini->n : 9 
+I/tvos    ( 1035): Tuner IIC WFail
+I/tvos    ( 1035): Tuner IIC WFail
+I/tvos    ( 1035): Tuner IIC WFail
+I/tvos    ( 1035): Tuner_IIC read  fail
+I/tvos    ( 1035): /home/cax/workdir/Mstar/SOURCECODE/Supernova/projects/devices/tuner/device_tuner_NXP_TDA18275.cpp, devTDA18275TunerInit, 491, Error
+I/tvos    ( 1035): dfb_system_lookup:309, module name = devmem
+I/tvos    ( 1035): *** Open Keypad Device: Enable, Input Interval: 10000 
+I/tvos    ( 1035): [INFO] Change to Voltage: 115 mv (0x28)
+I/tvos    ( 1035): [INFO] Change to Voltage: 113 mv (0x2B)
+I/tvos    ( 1035): [directfb/input]---------------->start thread hotplug polling..
+I/tvos    ( 1035): [directfb/input]----------------->start thread hotplug polling end..
+I/tvos    ( 1035): --------unsupport----------
+I/tvos    ( 1035): [MSOS_PRINT][000520]     [MsOS_Init] already inited!
+I/tvos    ( 1035): [MAPI PNL][001679] Initialization more than once
+I/tvos    ( 1035): [XC,Version] 
+I/tvos    ( 1035):  [MSOS_PRINT][000520]     [MsOS_Init] already inited!
+I/tvos    ( 1035): Device or resource busy
+I/tvos    ( 1035): Cannot open interrupt descriptor for irq=147 
+I/tvos    ( 1035): [GOP INFO] gop open
+I/tvos    ( 1035): [IZZY] (_GOP_RegisterAllCBFunc)
+I/tvos    ( 1035):  DFB USE THE GFX : MSTAR_G2 
+I/tvos    ( 1035): [DFB] SetGOPDst layer:0
+I/tvos    ( 1035): [INFO] Change to Voltage: 115 mv (0x28)
+I/tvos    ( 1035): [INFO] Change to Voltage: 113 mv (0x2B)
+I/tvos    ( 1035): flag DCAF_BRIGHTNESS not set! 
+I/tvos    ( 1035): [MApi_GOP_SetPINPON] Not Support for type:0 bEn:0
+I/tvos    ( 1035): [MApi_GOP_SetPINPON] Not Support for type:0 bEn:0
+I/tvos    ( 1035): [MApi_GOP_GWIN_EnableTileMode] Not SUPPORT bEn:0 type:1
+I/tvos    ( 1035):  sn init-chk#3 
+I/tvos    ( 1035): [AT][SN][init msrv][10617]
+I/tvos    ( 1035): =====> createAllMSrvClass ==> 
+I/tvos    ( 1035): ##########################################################################
+I/tvos    ( 1035): >>>>> System Database, Current Version:0x11, Latest Version:0x11 <<<<<
+I/tvos    ( 1035): =====LoadGenSetting=====
+I/tvos    ( 1035): System DB ----> LoadSysSetting
+I/tvos    ( 1035): System DB ----> LoadSoundSetting
+I/tvos    ( 1035): System DB ----> LoadTimeData
+I/tvos    ( 1035): System DB ----> LoadBlockData
+I/tvos    ( 1035): System DB ----> LoadUserPCModeSetting
+I/tvos    ( 1035): System DB ----> LoadPipSetting
+I/tvos    ( 1035): System DB ----> LoadVideoSetting
+I/tvos    ( 1035): System DB ----> LoadEPGTimerSetting
+I/tvos    ( 1035): Row =5
+I/tvos    ( 1035): =====Load and Check Over=====
+I/tvos    ( 1035): =====LoadFactorySetting=====
+I/tvos    ( 1035): =====Load and Check Over=====
+I/tvos    ( 1035): [msAPI_CI_common.cpp:1524][Warning!][CI] Callback Fn for CI Events is not installed yet!
+I/tvos    ( 1035):  CI[0] [CITurnPCMCIAPower]:bIsTurnOn : 0
+I/tvos    ( 1035): 
+I/tvos    ( 1035): @@ Demux has not been initialized!
+I/tvos    ( 1035): Create EPG memory pool by HEAP, the max memory allocation will be 5242880 bytes
+I/tvos    ( 1035): Can't find out selected GPIO device 24!!Please add GPIO device into system.cfg
+I/tvos    ( 1035): [[utopia]]      0 DSPBinBaseAddress = 0x0
+I/tvos    ( 1035): [[utopia]]      0 DSPMadBaseBufferAdr = 0x13540000
+I/tvos    ( 1035): [[utopia]]      0 DSPMadMIUBank = 0
+I/tvos    ( 1035): [[utopia]]      1 DSPBinBaseAddress = 0x0
+I/tvos    ( 1035): [[utopia]]      1 DSPMadBaseBufferAdr = 0x133c0000
+I/tvos    ( 1035): [[utopia]]      1 DSPMadMIUBank = 0
+I/tvos    ( 1035): [[utopia]]      2 DSPBinBaseAddress = 0x0
+I/tvos    ( 1035): [[utopia]]      2 DSPMadBaseBufferAdr = 0x13280000
+I/tvos    ( 1035): [[utopia]]      2 DSPMadMIUBank = 0
+I/tvos    ( 1035): [[utopia]]      Start HAL_AUDIO_AllocateVars InitShmFlag=1
+I/tvos    ( 1035): [[utopia]]      HAL_AUDIO_AllocateVars QUERY ClientCounter=1
+I/tvos    ( 1035): [[utopia]]      End HAL_AUDIO_AllocateVars InitShmFlag=1, ClientCounter=1 
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_0.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 13301
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_0.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_0.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_0.bin, readSize 0, u32Size 13301
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_0.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Create EPG memory pool by HEAP, the max memory allocation will be 5242880 bytes
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_1.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 13301
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_1.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_1.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_1.bin, readSize 0, u32Size 13301
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_1.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Create EPG memory pool by HEAP, the max memory allocation will be 5242880 bytes
+I/tvos    ( 1035): [[utopia]]      HAL_MAD_SetMemInfo : DDR_ADDR = 0x13540000, MIUBank = 0
+I/tvos    ( 1035):       HAL_MAD2_SetMemInfo : DDR_ADDR = 0x133C0000, R2_ADDR = 0x13280000
+I/tvos    ( 1035):        ======> Audio R2 Base : 13280000
+I/tvos    ( 1035): MDrv_AUDIO_SeSystemLoadCode() 
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_2.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): audio DSP_SE LoadCode success..
+I/tvos    ( 1035): MDrv_AUDIO_DecoderLoadCode() 
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 13301
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_2.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_2.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 65535
+I/tvos    ( 1035): Read Failed ! m_path: /DatabaseBackup/dtv_cmdb_2.bin, readSize 0, u32Size 13301
+I/tvos    ( 1035): Read Failed ! m_path: /Database/dtv_cmdb_2.bin, readSize 0, u32Size 4
+I/tvos    ( 1035): CM DB version data read error, reset CM DB
+I/tvos    ( 1035): Read Failed ! m_path: /Database/atv_cmdb.bin, readSize 0, u32Size 12580
+I/tvos    ( 1035): Read Failed ! m_path: /Database/atv_cmdb.bin, readSize 0, u32Size 12580
+I/tvos    ( 1035): ATV: Mapping errorDSP1 LoadCode success..
+I/tvos    ( 1035): DEC System code download finished!
+I/tvos    ( 1035):  [Warning!!]No SRS TSXT license!! 
+I/tvos    ( 1035): error!m_4k2kMutex init fail,please check!!!
+I/tvos    ( 1035): Init:s32OffsetTime = 0
+I/tvos    ( 1035): >>>>>>>RestoreTimerDB:Restore Timer DB Start.....<<<<<<<
+I/tvos    ( 1035): Before dbptr->GetSystemDatabase
+I/tvos    ( 1035): After dbptr->GetSystemDatabase
+I/tvos    ( 1035): **************************DumpDB*********************************************************
+I/tvos    ( 1035): bOffTimeFlag = 0 , bOnTimeFlag = 0, enOffTimeState = 0, enOffTimeState = 0
+I/tvos    ( 1035): u8OffTimer_Info_Hour = 0 ,u8OffTimer_Info_Min = 0 ,u8OnTimer_Info_Hour = 12, u8OnTimer_Info_Min= 0
+I/tvos    ( 1035): cOnTimeTVSrc = 0, cOnTimerChannel = 0, cOnTimerVolume = 30, eTimeZoneInfo= 50
+I/tvos    ( 1035): *****************************************************************************************
+I/tvos    ( 1035): tm_year = 1970, tm_mon = 1, tm_mday = 1, tm_hour = 0,tm_min= 49,  tm_sec = 41
+I/tvos    ( 1035): Thu Jan  1 00:49:41 1970
+I/tvos    ( 1035): time(NULL) = 2981
+I/tvos    ( 1035): mapi_interface::Get_mapi_system()->GetClockOffset() = 23400
+I/tvos    ( 1035): Thu Jan  1 00:49:41 1970
+I/tvos    ( 1035): >>>>>>, m_u32OffTimesecs = 2147483647, m_u32OffRemain = 2147483647
+I/tvos    ( 1035): SetOnTime([time  0 12: 0][Period:0][tv: 0, 0, 30][save:0][boot:0])
+I/tvos    ( 1035): tm_year = 1970, tm_mon = 1, tm_mday = 1, tm_hour = 0,tm_min= 49,  tm_sec = 41
+I/tvos    ( 1035): m_enOnTimerState = 0, m_stOnTime.u8Hour = 12, m_stOnTime.u8Minute = 0 , m_stOnTimeDes.enTVSrc = 0, m_stOnTimeDes.u16ChNo = 0, m_stOnTimeDes.u8Vol = 30
+I/tvos    ( 1035): Thu Jan  1 00:49:41 1970
+I/tvos    ( 1035): u32CurrTime =2981, RTC sec = 2981 , Wakeuptime = 4294943896
+I/tvos    ( 1035):  [Warning!!] [mapi_audio_customer.cpp] [SetSoundMuteStatus()] IsAudioInitDone() == FALSE, Please Check!!   
+I/tvos    ( 1035): Before ARC Enabled....
+I/tvos    ( 1035): ARC Enabled....
+I/tvos    ( 1035): HDMI 1 : ARC Enabled....
+I/tvos    ( 1035): HDMI 2 : ARC Enabled....
+I/tvos    ( 1035): HDMI 3 : ARC Enabled....
+I/tvos    ( 1035): Can't find out selected GPIO device 45!!Please add GPIO device into system.cfg
+I/tvos    ( 1035): Sound_Hidev_OffCan't find out selected GPIO device 24!!Please add GPIO device into system.cfg
+I/tvos    ( 1035): Can't find out selected GPIO device 24!!Please add GPIO device into system.cfg
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 3.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 4.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 6.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 7.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 11.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 15.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 12.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 3.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 4.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 6.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 7.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 11.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 15.
+I/tvos    ( 1035): [Warning]Unknown AudioSDKinfoType type 12.
+I/tvos    ( 1035):  [Warning!!] return , Unknown IP Security=15. 
+I/tvos    ( 1035):  [Warning!!] return , Unknown IP Security=15. 
+I/tvos    ( 1035): tm_year = 1970, tm_mon = 1, tm_mday = 1, tm_hour = 0,tm_min= 49,  tm_sec = 41
+I/tvos    ( 1035): tm_year = 1970, tm_mon = 1, tm_mday = 1, tm_hour = 0,tm_min= 49,  tm_sec = 41
+I/tvos    ( 1035): IfTodayInTimerTerm:timeinfo.tm_wday = 4
+I/tvos    ( 1035): RestoreTimerDB:IfTodayInTimerTerm = False , TimeDiff = 40219
+I/tvos    ( 1035): tm_year = 1970, tm_mon = 1, tm_mday = 1, tm_hour = 0,tm_min= 49,  tm_sec = 41
+I/tvos    ( 1035): IfTodayInTimerTerm:timeinfo.tm_wday = 4
+I/tvos    ( 1035): >>>>>>>RestoreTimerDB:Restore Timer DB End.....<<<<<<<<<
+I/tvos    ( 1035): ---> MSrv_Factory_Mode::Init
+I/tvos    ( 1035): ---> MSrv_Factory_Mode::Init-exit
+I/tvos    ( 1035): Init PWM2
+I/tvos    ( 1035): [Utopia] T8 is not support
+I/tvos    ( 1035): error: Input type source number is too large!!!
+I/tvos    ( 1035): 00426164005c
+I/tvos    ( 1035): Device or resource busy
+I/tvos    ( 1035): Cannot open interrupt descriptor for irq=147 Wrong Chip ID
+I/tvos    ( 1035): Auth NG
+I/tvos    ( 1035): Hash key AUTH NG
+I/tvos    ( 1035): **************************************
+I/tvos    ( 1035): Please update hash key!!
+I/tvos    ( 1035): **************************************
+I/tvos    ( 1035): ASSERT FAIL: mapi_system.cpp void mapi_system::IpSecurityAuthentication(MAPI_U8*, MAPI_U8*) 803
+I/tvos    ( 1035): tvos terminated by signal 6
+I/tvos    ( 1035): MSrv_Timer::Constructor...

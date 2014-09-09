@@ -1,0 +1,1 @@
+cmd_drivers/mstar/iomap/built-in.o :=  /tools/arm/arm-2012.09/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/mstar/iomap/built-in.o drivers/mstar/iomap/mdrv-iomap.o ; scripts/mod/modpost drivers/mstar/iomap/built-in.o

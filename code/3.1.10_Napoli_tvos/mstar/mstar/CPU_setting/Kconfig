@@ -1,0 +1,7 @@
+config MSTAR_CPU_setting
+
+bool "CPU_setting"
+
+help
+    MStar CPU_setting driver function
+

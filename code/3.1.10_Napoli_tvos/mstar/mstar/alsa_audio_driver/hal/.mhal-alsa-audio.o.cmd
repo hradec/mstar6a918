@@ -1,0 +1,1 @@
+cmd_drivers/mstar/alsa_audio_driver/hal/mhal-alsa-audio.o := /tools/arm/arm-2012.09/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/mstar/alsa_audio_driver/hal/mhal-alsa-audio.o drivers/mstar/alsa_audio_driver/hal/napoli/mhal_audio.o ; scripts/mod/modpost drivers/mstar/alsa_audio_driver/hal/mhal-alsa-audio.o

@@ -1,0 +1,9 @@
+config MSTAR_POINTS_HANDLER
+
+tristate "POINTS_HANDLER for performance index"
+
+help
+    MStar POINTS_HANDLER
+default n
+
+

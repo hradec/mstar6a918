@@ -1,0 +1,1 @@
+cmd_drivers/mstar/ir/mdrv-ir.ko := /tools/arm/arm-2012.09/bin/arm-none-linux-gnueabi-ld -EL -r  -T /home/cax/workdir/mstar6a918/code/3.1.10_Napoli_tvos/3.1.10/scripts/module-common.lds --build-id  -o drivers/mstar/ir/mdrv-ir.ko drivers/mstar/ir/mdrv-ir.o drivers/mstar/ir/mdrv-ir.mod.o

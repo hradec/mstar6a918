@@ -1,0 +1,56 @@
+#menuconfig XZRAM_SUPPORT
+#        tristate "XZram support"
+
+#if XZRAM_SUPPORT
+
+
+config EXT_XVMALLOC
+	bool
+	default n
+
+config XZRAM
+	tristate "Compressed XRAM block device with internal/external memory support"
+	depends on BLOCK && SYSFS
+	select EXT_XVMALLOC
+	default n
+	help
+          Only workable at 2.6.36 or later version
+	  Creates virtual block devices called /dev/xzramX (X = 0, 1, ...).
+	  Pages written to these disks are compressed and stored in memory
+	  itself. These disks allow very fast I/O and compression provides
+	  good amounts of memory savings. You can use internal memory from
+          Kernel or external from a specific physical address.
+
+	  It has several use cases, for example: /tmp storage, use as swap
+	  disks and maybe many more.
+
+          This module is base on zram block device driver.
+
+
+config XZRAM_COMPRESS_LZ4
+       bool "using LZ4 algorithm"
+       depends on XZRAM
+       select LZ4
+       default y
+
+config XZRAM_COMPRESS_LZO
+       bool "using LZO algorithm"
+       depends on XZRAM
+       select LZO_COMPRESS
+       select LZO_DECOMPRESS
+       default n
+
+config XZRAM_COMPRESS_PERFORMANCE_STAT
+       bool "Compress performance stat"
+       depends on XZRAM
+       default n
+
+config  XZRAM_DEBUG
+	bool "Compressed XRAM block device debug support"
+	depends on XZRAM
+	default n
+	help
+	  This option adds additional debugging code to the compressed
+	  RAM block device driver.
+
+#endif 

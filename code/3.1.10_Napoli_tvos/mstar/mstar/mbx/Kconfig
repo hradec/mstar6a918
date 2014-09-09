@@ -1,0 +1,6 @@
+config MSTAR_MBX
+tristate "MBX"
+default y
+help
+    enable MStar MBX driver.
+

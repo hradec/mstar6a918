@@ -1,0 +1,7 @@
+config MSTAR_RAMLOG
+
+tristate "RAMLOG"
+
+help
+    MStar RAMLOG driver function
+

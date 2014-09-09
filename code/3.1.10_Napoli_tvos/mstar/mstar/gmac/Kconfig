@@ -1,0 +1,46 @@
+config MSTAR_GMAC
+select NET
+select NET_ETHERNET
+select MII
+select PACKET
+select USE_POLICY_FWD
+select INET
+select NETDEVICES
+
+tristate "GMAC"
+default n
+
+---help---
+Enable compilation option for driver GMAC
+
+if MSTAR_GMAC
+config GMAC_SUPPLY_RNG
+bool "Supply to random number generator device"
+default n
+help
+    Supply to random number generator device
+
+config GMAC_ETHERNET_ALBANY
+bool "Supply to internel PHY"
+default n
+help
+    Supply to internel PHY
+
+config MSTAR_GMAC_HW_TX_CHECKSUM
+bool "Supply to hardware TX checksum"
+default n
+help
+    Supply to hardware TX checksum
+
+config MSTAR_GMAC_JUMBO_PACKET
+bool "Supply to jumbo packet"
+default n
+help
+    Supply to jumbo packet
+    
+config MSTAR_GMAC_RMII_DOWNGRADE_MODE
+bool "Supply GMAC to use external EPHY by RMII"
+default n
+help
+    Supply to GMAC use external RMII EPHY
+endif

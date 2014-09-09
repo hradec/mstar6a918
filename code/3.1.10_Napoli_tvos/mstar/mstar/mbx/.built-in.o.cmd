@@ -1,0 +1,1 @@
+cmd_drivers/mstar/mbx/built-in.o :=  /tools/arm/arm-2012.09/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/mstar/mbx/built-in.o drivers/mstar/mbx/mdrv-mbx.o ; scripts/mod/modpost drivers/mstar/mbx/built-in.o

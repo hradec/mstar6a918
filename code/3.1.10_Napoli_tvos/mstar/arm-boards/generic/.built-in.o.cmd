@@ -1,0 +1,1 @@
+cmd_arch/arm/arm-boards/generic/built-in.o :=  /tools/arm/arm-2012.09/bin/arm-none-linux-gnueabi-ld -EL    -r -o arch/arm/arm-boards/generic/built-in.o arch/arm/arm-boards/generic/memory.o arch/arm/arm-boards/generic/chip_arch.o ; scripts/mod/modpost arch/arm/arm-boards/generic/built-in.o

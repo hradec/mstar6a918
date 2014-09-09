@@ -1,0 +1,113 @@
+#
+# Copyright (C) 2010-2012 ARM Limited. All rights reserved.
+# 
+# This program is free software and is provided to you under the terms of the GNU General Public License version 2
+# as published by the Free Software Foundation, and any use by you of this program is subject to the terms of such GNU licence.
+# 
+# A copy of the licence is included with the program, and can also be obtained from Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+
+# Set default configuration to use, if Makefile didn't provide one.
+# Change this to use a different config.h
+CONFIG ?= os_memory_64m
+
+# Get path to driver source from Linux build system
+ifeq ($(OSKOS),msos)
+DRIVER_DIR=.
+else
+DRIVER_DIR=$(src)
+endif
+
+# MStar project config
+include $(DRIVER_DIR)/../build_system/project/$(CONFIG).mak
+
+# check kernel config
+ifeq ($(OSKOS),linux)
+CHECK_KERNEL_CONFIG ?= 0
+ifeq ($(CHECK_KERNEL_CONFIG),1)
+ifneq ($(CONFIG_CHIP_NAME),$(patsubst "%",%,$(CONFIG_MSTAR_CHIP_NAME)))
+$(error kernel config ($(CONFIG_MSTAR_CHIP_NAME)) not matched, should be $(CONFIG_CHIP_NAME))
+endif
+endif
+endif
+
+# Validate selected config
+ifneq ($(shell [ -d $(src)/arch-$(CONFIG) ] && [ -f  $(src)/arch-$(CONFIG)/config.h ] && echo "OK"), OK)
+$(warning Current directory is $(src))
+$(error No configuration found for config $(CONFIG). Check that arch-$(CONFIG)/config.h exists)
+else
+# Link arch to the selected arch-config directory
+$(shell [ -L $(src)/arch ] && rm $(src)/arch)
+$(shell ln -sf arch-$(CONFIG) $(src)/arch)
+$(shell touch $(src)/arch/config.h)
+endif
+
+UDD_FILE_PREFIX = ../mali/
+
+# Get subversion revision number, fall back to 0000 if no svn info is available
+SVN_REV := $(shell ((svnversion | grep -qv exported && echo -n 'Revision: ' && svnversion) || git svn info | sed -e 's/$$$$/M/' | grep '^Revision: ' || echo ${MALI_RELEASE_NAME}) 2>/dev/null | sed -e 's/^Revision: //')
+
+ccflags-y += -DSVN_REV=$(SVN_REV)
+ccflags-y += -DSVN_REV_STRING=\"$(SVN_REV)\"
+
+ccflags-y += -I$(src) -I$(src)/common -I$(src)/linux -I$(src)/../mali/common -I$(src)/../mali/linux -I$(src)/../../ump/include/ump
+ccflags-y += -DMALI_STATE_TRACKING=0
+ccflags-$(CONFIG_UMP_DEBUG) += -DDEBUG
+
+# MStar flags
+ifeq ($(TARGET_PLATFORM), mstar)
+	ifeq ($(MSTAR_PLATFORM),)
+		$(error "MSTAR_PLATFORM must be specified.")
+	endif
+
+	ccflags-y += -DMSTAR
+	ccflags-y += -DMSTAR_$(MSTAR_PLATFORM)
+
+	ifeq ($(ARCH), mips)
+		ccflags-y += -DMIPS
+	endif
+
+	ifneq ($(USING_RIU),0)
+		ccflags-y += -DMSTAR_RIU_ENABLED
+		ccflags-y += -DMSTAR_RIU_ADDRESS_TYPE=$(RIU_ADDRESS_TYPE)
+	endif
+
+	ifneq ($(PHYS_TO_BUS_ADDRESS_ADJUST),)
+		ccflags-y += -DPHYS_TO_BUS_ADDRESS_ADJUST=$(strip $(PHYS_TO_BUS_ADDRESS_ADJUST))
+	else
+		ccflags-y += -DPHYS_TO_BUS_ADDRESS_ADJUST=0
+	endif
+endif
+
+# For customer releases the Linux Device Drivers will be provided as ARM proprietary and GPL releases:
+# The ARM proprietary product will only include the license/proprietary directory
+# The GPL product will only include the license/gpl directory
+
+ifeq ($(wildcard $(src)/linux/license/gpl/*),)
+ccflags-y += -I$(src)/linux/license/proprietary
+else
+ccflags-y += -I$(src)/linux/license/gpl
+endif
+
+ump-y = common/ump_kernel_common.o \
+	common/ump_kernel_descriptor_mapping.o \
+	common/ump_kernel_api.o \
+	common/ump_kernel_ref_drv.o \
+	linux/ump_kernel_linux.o \
+	linux/ump_kernel_memory_backend_os.o \
+	linux/ump_kernel_memory_backend_dedicated.o \
+	linux/ump_memory_backend.o \
+	linux/ump_ukk_wrappers.o \
+	linux/ump_ukk_ref_wrappers.o \
+	linux/ump_osk_atomics.o \
+	linux/ump_osk_low_level_mem.o \
+	linux/ump_osk_misc.o \
+	$(UDD_FILE_PREFIX)linux/mali_osk_atomics.o \
+	$(UDD_FILE_PREFIX)linux/mali_osk_locks.o \
+	$(UDD_FILE_PREFIX)linux/mali_osk_memory.o \
+	$(UDD_FILE_PREFIX)linux/mali_osk_math.o \
+	$(UDD_FILE_PREFIX)linux/mali_osk_misc.o
+
+obj-$(CONFIG_UMP) := ump.o
+

@@ -1,0 +1,17 @@
+config MAXIM_USB_VIDEO_CLASS
+	tristate "Maxim USB Video Class (UVC)"
+	---help---
+	  Support for the USB Video Class (UVC).  Currently only video
+	  input devices, such as webcams, are supported.
+
+	  For more information see: <http://linux-uvc.berlios.de/>
+
+config MAXIM_USB_VIDEO_CLASS_INPUT_EVDEV
+	bool "Maxim UVC input events device support"
+	default y
+	depends on MAXIM_USB_VIDEO_CLASS && INPUT
+	---help---
+	  This option makes USB Video Class devices register an input device
+	  to report button events.
+
+	  If you are in doubt, say Y.

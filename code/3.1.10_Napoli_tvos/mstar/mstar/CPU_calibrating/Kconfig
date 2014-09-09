@@ -1,0 +1,7 @@
+config MSTAR_CPU_calibrating
+
+bool "CPU_calibrating"
+
+help
+    MStar CPU_calibrating driver function
+

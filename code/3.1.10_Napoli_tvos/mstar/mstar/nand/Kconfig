@@ -1,0 +1,39 @@
+
+config MSTAR_NAND
+  select MTD
+  select MTD_CHAR
+  select MTD_BLKDEVS
+  select MTD_OOPS
+
+  select MTD_COMPLEX_MAPPINGS
+  select MTD_BLOCK2MTD
+  select MTD_NAND_MUSEUM_IDS
+  select MTD_NAND_PLATFORM
+  select MTD_CMDLINE_PARTS
+  select MTD_UBI
+  #select MTD_UBI_WL_THRESHOLD
+  #select MTD_UBI_BEB_RESERVE
+
+  #select MTD_DEBUG
+  #select MTD_DEBUG_VERBOSE
+  select MTD_CONCAT
+  select MTD_PARTITIONS
+  select MTD_NAND
+  
+  tristate "NAND"
+  default n
+
+help
+    Enable MSTAR FCIE NAND driver
+
+config MTD_SLC_WRITE
+	bool "MTD Write/Read SLC partition"
+	depends on MSTAR_NAND	
+	default n
+	help   
+		Support Write/Read SLC Partition
+    
+config MSTAR_NAND_IP
+	string
+	default "fcie3"
+

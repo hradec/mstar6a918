@@ -1,0 +1,7 @@
+config MSTAR_PM_ADDR
+
+tristate "PM_ADDR"
+
+help
+    MStar PM_ADDR driver function
+

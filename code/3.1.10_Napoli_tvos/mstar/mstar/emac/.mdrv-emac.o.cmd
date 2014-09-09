@@ -1,0 +1,1 @@
+cmd_drivers/mstar/emac/mdrv-emac.o := /tools/arm/arm-2012.09/bin/arm-none-linux-gnueabi-ld -EL    -r -o drivers/mstar/emac/mdrv-emac.o drivers/mstar/emac/mdrv_emac.o drivers/mstar/emac/napoli/mhal_emac.o ; scripts/mod/modpost drivers/mstar/emac/mdrv-emac.o

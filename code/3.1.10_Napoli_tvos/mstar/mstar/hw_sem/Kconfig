@@ -1,0 +1,6 @@
+config MSTAR_HW_SEM
+
+tristate "HW_SEMAPHORE"
+  default n
+  help
+    MStar Hardware Semaphore driver function

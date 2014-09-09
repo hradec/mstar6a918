@@ -1,0 +1,7 @@
+config MSTAR_MTLB
+
+tristate "MTLB"
+	default n
+	help
+		Enable compilation option for driver Mstar TLB
+
